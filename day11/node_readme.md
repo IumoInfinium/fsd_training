@@ -168,13 +168,8 @@ Clearly, I can see a `User.js` file in models, that is my
 
 - Now, to run the file just execute
 
-    ```
-    npm start
-    
-    or you can do
-    
-    npm index.js
-    ```
+    - `node index.js`
+    - `npm start`  (This might not work for now, but will work after going through next section)
     
 ---
 
@@ -347,3 +342,43 @@ exports.setUserDetails = async (req,res) => {
     res.send("set.user.route!!");
 }
 ```
+
+Starting my node application by `npm start` inside the terminal.
+
+Now,when I open my browser, and go to [http://localhost:8080](http://localhost:8080), it will show 
+
+> Holla, you are currently at users page-section !
+
+See, the URL open right now is `localhost:8080/`, but what if i change it to `localhost:8080/user` or `localhost:8080/user/set`, i will see this
+
+#### [http://localhost:8080/user/](http://localhost:8080/user/)
+> get.user.route!!
+
+#### [http://localhost:8080/user/set](http://localhost:8080/user/set)
+> set.user.route!!
+
+What it shows right now is static !! And what's the fun in it?
+So, let's change `users.controllers.js`, to access the collection(table) and get a list of all the users.
+
+#### users.controllers.js
+
+```javascript
+const userModel = require("../database/models/users");
+
+exports.getUserDetails = async (req,res) => {
+    // res.send("get.user.route!!");
+    try{
+        const users = await userModel.find({});
+        console.log(users);
+        res.send(users);
+    }
+    catch(error){
+        console.log(error.message);
+        res.send("error");
+    }
+}
+```
+This will give an array of all the users, when `localhost:8080/users/` is hit.
+Similarly, I can create different routings with endpoints with different funcitonalities(controllers) for them. 
+
+> **Note** : I am assuming that the terminal commans `npm start`, still works as expected, and runs continuously.

@@ -11,6 +11,8 @@ const app = express();
 const PORT = 8080;
 
 app.use("/", routes);
+app.use(express.json());
+app.use(express.urlencoded({extended : true}));
 
 const main = async() => {
     const connect = await mongo.connectToDb();
