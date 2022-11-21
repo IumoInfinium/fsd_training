@@ -1,0 +1,136 @@
+body{
+    background-color: black;
+    /* background-image: linear-gradient(to bottom, coral, black); */
+    background: #c31432;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color:white;
+}
+.nav-tab-active, .nav-tab{
+    text-decoration: none;
+    color:grey;
+}
+.nav-tab-active{
+    color:white;
+}
+.nav-tab-active:hover{
+    color:white;   
+}
+.nav-tab:hover{
+    color:white;
+    text-decoration:none;
+}
+.href-link{
+    color:white;
+    text-decoration: none;
+}
+.href-link:hover{
+    color:white;
+    /* font-weight: bold; */
+    text-decoration: none;
+}
+.search-tab{
+    background-color: black;
+    color:white;
+}
+.search-input{
+    /* background-color: black; */
+    color:gray;
+    background-color: black;
+    border:0;
+    border-bottom: 2px solid gray;
+    width: 100%;
+
+}
+.search-input:focus{
+    color:gray;
+    background-color: black;
+    border:0;
+    border-bottom: 2px solid gray;
+}
+
+.search-input:hover{
+    color:gray;
+    border:0;
+    border-bottom: 2px solid gray;
+    width: 100%;
+}
+.search-btn-close{
+    background-color: grey;
+}
+
+
+.profile-dropdown{
+    color:whitesmoke;
+}
+.recent-search{
+    color:grey;
+    list-style-type: none;;
+}
+
+.h3-href{
+    text-decoration: none;
+    color:white;
+}
+.h3-href:hover{
+    color:white;
+    text-decoration: underline;
+}
+.thumbnail{
+    width:20%;
+    height: 20%;
+    margin:12px;
+}
+.carousel-btn{
+   /* border:1px solid grey; */
+    background-color: black;
+}
+
+.explore-bar{
+    background-color: rgb(76, 76, 76);
+    font-size: large;
+    border-radius: 4px;
+    width: 30%;
+    text-align: center;
+    color: white;
+}
+.explore-bar:hover{
+    background-color: rgb(112, 112, 112);
+    font-size: large;
+    border-radius: 4px;
+    width: 30%;
+    text-align: center;
+}
+.mood1{
+    border-left: 3px solid red;
+    background-color: rgb(76, 76, 76);
+}
+.mood2{
+    border-left: 3px solid orange;
+    background-color: rgb(76, 76, 76);
+}
+.mood3{
+    border-left: 3px solid yellow;
+    background-color: rgb(76, 76, 76);
+}
+.mood4{
+    border-left: 3px solid darkslateblue;
+    background-color: rgb(76, 76, 76);
+}
+.mood5{
+    border-left: 3px solid plum;
+    background-color: rgb(76, 76, 76);
+}
+.mood6{
+    border-left: 3px solid blueviolet;
+    background-color: rgb(76, 76, 76);
+}
+.mood1, .mood2, .mood3, .mood4, .mood5, .mood6{
+    text-align: center;
+    border-radius: 5px ;
+}
+.mood1:hover, .mood2:hover, .mood3:hover, .mood4:hover, .mood5:hover, .mood6:hover{
+    background-color: grey;
+    border-left-color: rgb();
+}

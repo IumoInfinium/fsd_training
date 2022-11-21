@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style2.css">
+</head>
+<body>
+    <div class="img-section">
+        <img src="https://archlinux.org/static/logos/archlinux-logo-light-90dpi.d36c53534a2b.png"> 
+    </div>
+    <hr>
+    <h4><a class="main-url" href="https://archlinux.org/">Check out Arch linux wiki!!!</a></h4>
+
+    <div class="pkg-section">
+        Some famous Arch packages:
+        <ul >
+            <li>
+                <a href="https://archlinux.org/packages/community/x86_64/aarch64-linux-gnu-gcc/">aarch64-linux-gnu-gcc</a>
+
+                <dd>
+                    The GNU Compiler Collection - cross compiler for ARM64 target
+                </dd>
+            </li>
+            <li>
+                <a href="https://archlinux.org/packages/community/any/ack/">ack</a>
+
+                <dd>
+                    A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code
+                </dd>
+            </li>
+        </ul>    
+    </div>
+
+
+
+    <form action="https://archlinux.org/packages/search/json/" method="GET">
+        <label>Get json information about the package</label>
+        <br>
+        <input class="search-input" name="q" placeholder="Search for a package..."/>
+        <input type="submit" class="search-button" value="Submit"/>
+    </form>
+    
+    <div id="pkg-updates" class="pkg-updates">
+        <h3>Recent Updates <span class="more">(<a style="text-decoration: none;background-color: transparent;" href="https://archlinux.org/packages/?sort=-last_update" title="Browse all of the latest packages">more</a>)</span></h3>
+    
+        <p>
+        Access the RSS Feed here -
+        <a class="rss-feed" href="https://archlinux.org/feeds/packages/" title="Arch Package Updates RSS Feed" class="rss-icon"><img src="https://archlinux.org/static/rss.ca03bf98a65a.svg" alt="RSS Feed"></a>
+    </p>
+        <!-- <hr> -->
+        <table border="2px">
+            <tr>
+                <th class="pkg-name"><span class="community">Pakages</span></td>
+                <th class="pkg-arch">
+                    Supported Versions
+                </td>
+            </tr>
+            <tbody><tr>
+                <td class="pkg-name"><span class="community">sway 1:1.7-10</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/x86_64/sway/" title="Details for sway [community]">x86_64</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="extra">tumbler 4.16.1-3</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/extra/x86_64/tumbler/" title="Details for tumbler [extra]">x86_64</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">vscode-languageservers 1.73.0-1</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/vscode-languageservers/" title="Details for vscode-languageservers [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">klayout 0.27.12-1</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/x86_64/klayout/" title="Details for klayout [community]">x86_64</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-falcon 0.42.3-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-falcon/" title="Details for ruby-falcon [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-rubocop-ast 1.23.0-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-rubocop-ast/" title="Details for ruby-rubocop-ast [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">v2ray-domain-list-community 20221102023148-1</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/v2ray-domain-list-community/" title="Details for v2ray-domain-list-community [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ibus-table 1.16.13-1</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ibus-table/" title="Details for ibus-table [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-notiffany 0.1.3-1</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-notiffany/" title="Details for ruby-notiffany [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-console 1.16.2-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-console/" title="Details for ruby-console [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-oedipus_lex 2.6.0-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-oedipus_lex/" title="Details for ruby-oedipus_lex [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-trenni 3.14.0-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/x86_64/ruby-trenni/" title="Details for ruby-trenni [community]">x86_64</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-sus 0.15.0-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-sus/" title="Details for ruby-sus [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-bake-test 0.2.0-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-bake-test/" title="Details for ruby-bake-test [community]">any</a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pkg-name"><span class="community">ruby-traces 0.7.0-2</span></td>
+                <td class="pkg-arch">
+                    <a href="/packages/community/any/ruby-traces/" title="Details for ruby-traces [community]">any</a>
+                </td>
+            </tr>
+            
+        </tbody></table>
+    </div>
+</body>
+</html>

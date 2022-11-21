@@ -1,0 +1,64 @@
+body{
+    background-image: url(https://images.wallpaperscraft.com/image/single/deer_art_vector_134088_6827x3840.jpg);
+    position: relative;
+    color:white
+}
+
+.mynav{
+    background: #59C173;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5D26C1, #a17fe0, #59C173);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.manga-image{
+    /* text-align: center; */
+    width: 100%;
+    height: 10%;
+    border-radius:10%;
+}
+
+.manga-name{    
+    border-radius: 100px;
+    /* width: 60%; */
+    display: flex;
+    overflow: hidden;
+    text-align: center;
+    height: 50%;
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: center;
+    color:aliceblue;
+    background-color: red;
+}
+.manga-name:hover{
+    background-color: lightgoldenrodyellow;
+    color:black;
+}
+
+.genres{
+    float: right;
+    list-style-type: none;  
+}
+
+.manga-genre{
+    color:white;
+    padding:10px
+}
+.manga-genre:hover{
+    color:purple;
+    background-color: plum;
+}
+.collection-body{
+    
+}
+.collection-img{
+    max-width:10rem;
+    max-height: 20rem;
+}
+/* .collection-body:hover{
+    padding:10%;
+} */
+.collection-img:hover{
+    
+    border-radius: 2px;
+    padding:5%;
+}

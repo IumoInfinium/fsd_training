@@ -1,0 +1,40 @@
+.div1{
+    background-image:linear-gradient(red,orange);
+    color : purple;
+    font-size: larger;
+    border: 1px dashed grey;
+    /* margin: 10px; */
+    /* padding: 100px 5px 5px 200px; */
+    /* text-align: center; */
+    /* float: right; */
+    position: relative;
+    width: 1000px;
+}
+
+.div1_2{
+
+    align-items: center;
+    width: 100px;
+    /* transition: width 10s; */
+    background-color: cyan;
+    animation-name: xyz;
+    /* position: relative; */
+    /* right:100px; */
+    /* top:100px; */
+    animation-duration :4s;
+    animation-iteration-count :4;
+}
+.div1_2:hover{
+    width: 500px;
+}
+
+
+@keyframes xyz{
+    /* from{background-color: chartreuse;}
+    to{background-color:navajowhite;} */
+
+    0%{background-color: pink;}
+    25%{background-color: red;}
+    50%{background-color: orange;}
+    100%{background-color: pink;}
+}

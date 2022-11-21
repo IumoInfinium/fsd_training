@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Music</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="sticky-top ">
+        <div class="fluid-container ms-2 ">
+            <div class="d-flex justify-content-between">
+                <div class="mt-2">
+                    <img src="https://music.youtube.com/img/on_platform_logo_dark.svg">
+                </div>
+                <div class="">
+                    <div class="d-flex align-self-stretch text-secondary fw-semibold fs-5">
+                        <div class="p-2"><a href="./index.html" class="nav-tab">Home</a></div>
+                        <div class="p-2"><a href="./explore.html" class="nav-tab-active">Explore</a></div>
+                        <div class="p-2"><a href="#" class="nav-tab">Library</a></div>
+                        <div class="p-2"><a href="#" class="nav-tab">Ugrade</a></div>
+                        <div class="p-2">
+                            <div class="nav-tab" data-bs-toggle="modal" data-bs-target="#searchBarModal">
+                                Search
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-2 profile-section">
+                    <div class="m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cast" viewBox="0 0 16 16">
+                            <path d="m7.646 9.354-3.792 3.792a.5.5 0 0 0 .353.854h7.586a.5.5 0 0 0 .354-.854L8.354 9.354a.5.5 0 0 0-.708 0z"/>
+                            <path d="M11.414 11H14.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-13a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h3.086l-1 1H1.5A1.5 1.5 0 0 1 0 10.5v-7A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v7a1.5 1.5 0 0 1-1.5 1.5h-2.086l-1-1z"/>
+                          </svg>
+                    </div>
+
+                    <a href="#" class="dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle" width="30%" src="https://randomuser.me/api/portraits/women/21.jpg">
+                    </a>
+                    <ul class="dropdown-menu bg-dark justify-content-between p-3 m-2">
+                        <li>
+                            <a class="href-link" href="#">
+                                <img class="rounded-circle p-1 m-2" width="20%" src="https://randomuser.me/api/portraits/women/21.jpg">
+                                Holla!!
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Account
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Subscription
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Sign Out
+                            </a>
+                        </li>
+                        <hr class="text-light">
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Upload Music
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                History
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Feedback
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="modal fade" id="searchBarModal" tabindex="-1" aria-labelledby="searchBarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <input type="text" class="search-input" id="exampleFormControlInput1" placeholder="Search...">
+                <button type="button" class="btn-close text-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body justify-content-center">
+                <table class="table table-borderless table-dark table-striped">
+                    <tr>
+                        <td><i class="bi bi-clock-history"></i></td>
+                        <td>Tightrope</td>
+                        <td ><i class="bi bi-x-lg"></i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-clock-history"></i></td>
+                        <td>Tightrope</td>
+                        <td><i class="bi bi-x-lg"></i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-clock-history"></i></td>
+                        <td>Tightrope</td>
+                        <td><i class="bi bi-x-lg"></i></td>
+                    </tr>
+
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-around mb-3 mt-5">
+            <div class="btn p-2 explore-bar" data-bs-toggle="collapse" data-bs-target="#new-releases" aria-expanded="false" aria-controls="new-releases"><i class="bi bi-newspaper"></i> New Releases</div>
+            <div class="btn p-2 explore-bar" data-bs-toggle="collapse" data-bs-target="#charts" aria-expanded="false" aria-controls="charts"><i class="bi bi-bar-chart-fill"></i> Charts</div>
+            <div class="btn p-2 explore-bar" data-bs-toggle="collapse" data-bs-target="#moods" aria-expanded="false" aria-controls="moods"><i class="bi bi-moon-stars"></i> Moods & genres</div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="new-releases">
+                <div class="card card-body">
+                  Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="collapse multi-collapse" id="charts">
+                <div class="card card-body">
+                  Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <table class="table table-dark table-borderless text-start p-2 m-2 table-group-divider"  style="border-collapse:separate;">
+                <tbody>
+                    <tr >
+                        <td class="mood1">2000s</td>
+                        <td class="mood2">Devotional</td>
+                        <td class="mood3">Jazz Artists</td>
+                        <td class="mood4">Classical Favourites</td>
+                        <td class="mood5">Jazz Moods</td>
+                        <td class="mood6">African Moods</td>
+                      </tr>
+                    <tr>
+                        <td class="mood5">Rock</td>
+                        <td class="mood4">Classical Composers</td>
+                        <td class="mood2">Bengali</td>
+                        <td class="mood2">Punjabi</td>
+                        <td class="mood6">Malyalam</td>
+                        <td class="mood3">Marathi</td>
+                      </tr>
+                    <tr>
+                        <td class="mood2">Chill</td>
+                        <td class="mood5">Commute</td>
+                        <td class="mood4">Romance</td>
+                        <td class="mood6">Sleep</td>
+                        <td class="mood3">Energy Boosters</td>
+                        <td class="mood1">Feel Good</td>
+                      </tr>
+                    <tr>
+                        <td class="mood6">Workout</td>
+                        <td class="mood4">Focus</td>
+                        <td class="mood1">Party</td>
+                        <td class="mood3">Rock n Roll</td>
+                        <td class="mood2">Hip-Hop</td>
+                        <td class="mood5">Pop</td>
+                      </tr>
+                    <tr>
+                </tbody>
+            </table>
+          </div>
+    </div>
+</body>
+</html>

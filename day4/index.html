@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Music</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="sticky-top ">
+        <div class="fluid-container ms-2 ">
+            <div class="d-flex justify-content-">
+                <div class="mt-2">
+                    <img src="https://music.youtube.com/img/on_platform_logo_dark.svg">
+                </div>
+                <div class="">
+                    <div class="d-flex align-self-stretch text-secondary fw-semibold fs-5">
+                        <div class="p-2"><a href="./index.html" class="nav-tab-active">Home</a></div>
+                        <div class="p-2"><a href="./explore.html" class="nav-tab ">Explore</a></div>
+                        <div class="p-2"><a href="#" class="nav-tab">Library</a></div>
+                        <div class="p-2"><a href="#" class="nav-tab">Ugrade</a></div>
+                        <div class="p-2">
+                            <div class="nav-tab" data-bs-toggle="modal" data-bs-target="#searchBarModal">
+                                Search
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-2 profile-section">
+                    <div class="m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cast" viewBox="0 0 16 16">
+                            <path d="m7.646 9.354-3.792 3.792a.5.5 0 0 0 .353.854h7.586a.5.5 0 0 0 .354-.854L8.354 9.354a.5.5 0 0 0-.708 0z"/>
+                            <path d="M11.414 11H14.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-13a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h3.086l-1 1H1.5A1.5 1.5 0 0 1 0 10.5v-7A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v7a1.5 1.5 0 0 1-1.5 1.5h-2.086l-1-1z"/>
+                          </svg>
+                    </div>
+
+                    <a href="#" class="dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle" width="30%" src="https://randomuser.me/api/portraits/women/21.jpg">
+                    </a>
+                    <ul class="dropdown-menu bg-dark justify-content-between p-3 m-2">
+                        <li>
+                            <a class="href-link" href="#">
+                                <img class="rounded-circle p-1 m-2" width="20%" src="https://randomuser.me/api/portraits/women/21.jpg">
+                                Holla!!
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Account
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Subscription
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Sign Out
+                            </a>
+                        </li>
+                        <hr class="text-light">
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Upload Music
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                History
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item profile-dropdown" href="#">
+                                Feedback
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="modal fade" id="searchBarModal" tabindex="-1" aria-labelledby="searchBarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content bg-black">
+            <div class="modal-header">
+                <input type="text" class="search-input" id="exampleFormControlInput1" placeholder="Search...">
+                <button type="button" class="btn-close  search-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body justify-content-center">
+                <table class="table table-borderless table-dark p-2 m-2 text-secondary">
+                    <tr>
+                        <td><i class="bi bi-clock-history"></i></td>
+                        <td>Tighttrope</td>
+                        <td ><i class="bi bi-x-lg"></i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-clock-history"></i></td>
+                        <td >Tighttrope</td>
+                        <td><i class="bi bi-x-lg"></i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-clock-history"></i></td>
+                        <td>Tighttrope</td>
+                        <td><i class="bi bi-x-lg"></i></td>
+                    </tr>
+
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <div class="col-11 h3 h3-href" href="#">
+                    Listen again
+                </div>
+                <div class="col-1">
+                    <!-- <a class="col-6" href="#">more</a> -->
+                    <div class="d-flex">
+                        <button  class="carousel-btn" type="button" data-bs-target="#listen-again-carousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button  class="carousel-btn " type="button" data-bs-target="#listen-again-carousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div id="listen-again-carousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="col-3 thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block" alt="...">
+                            <img class="col-3 thumbnail" src="https://i1.sndcdn.com/artworks-2N5hy2zh8VhU-0-t500x500.jpg" class="d-block w-100" alt="...">
+                            <img class="col-3 thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="...">
+                            <img class="col-3 thumbnail" src="https://i1.sndcdn.com/artworks-000164728013-nfntgo-t500x500.jpg" class="d-block w-100" alt="...">
+                            <!-- <img class="col-3 thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="..."> -->
+                          </div>
+                          <div class="carousel-item">
+                            <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block" alt="...">
+                            <img class="thumbnail" src="https://i1.sndcdn.com/artworks-2N5hy2zh8VhU-0-t500x500.jpg" class="d-block w-100" alt="...">
+                            <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block" alt="...">
+                            <img class="thumbnail" src="https://i1.sndcdn.com/artworks-2N5hy2zh8VhU-0-t500x500.jpg" class="d-block w-100" alt="...">
+                            <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="...">    
+                          </div>
+                        </div>
+                  </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="row">
+                <div class="col-11 h3 h3-href" href="#">
+                    Recommended music videos
+                </div>
+                <!-- <div class="col">more</div> -->
+                <div class="col-1">
+                    <div class="d-flex">
+                        <button class="carousel-btn" type="button" data-bs-target="#recommended-carousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-btn" type="button" data-bs-target="#recommended-carousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="recommended-carousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-uBW4zjieDexymlG5-qvWVXQ-t500x500.jpg" class="d-block" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-2N5hy2zh8VhU-0-t500x500.jpg" class="d-block w-100" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-2N5hy2zh8VhU-0-t500x500.jpg" class="d-block w-100" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-AMoDYRmu34wUyJmK-EZDKlQ-t500x500.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-2N5hy2zh8VhU-0-t500x500.jpg" class="d-block w-100" alt="...">
+                        <img class="thumbnail" src="https://i1.sndcdn.com/artworks-Z7n4FPChLOnV-0-t500x500.jpg" class="d-block w-100" alt="...">    
+                      </div>
+                    </div>
+                    
+                  </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
