@@ -140,6 +140,11 @@ Similarly, use the **SALT** in `controllers/auth.controller.js` and **MONGODB_UR
 
 ### Using JWT - Json Web Token
 
+Links
+- [JWT Auth from DigitalOceean](https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs) $\star$
+- [JWT Auth from StackAbuse](https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/)
+
+So let me try doing it...
 - Generate a **token_secret** using `crypto` using
 
     ```js

@@ -9,12 +9,13 @@ exports.signUp = async (req,res) => {
     const userExists = userModel.findOne({
         email : userData.email
     })
+    console.log(userExists);
     if(userExists){
-        res.send({
+        return res.send({
             statusCode : 200,
             message : "User already exists! Please login !!",
             error : false,
-            data : userExists 
+            data : null
         })
     }
 
@@ -40,6 +41,12 @@ exports.signUp = async (req,res) => {
     await newUser.save((err) => {
         if(err) console.log(err.message);
     })
+    return res.send({
+        statusCode : 200,
+        message : "User created! Please login !!",
+        error : false,
+        data : "GOOD"
+    });
 }
 
 exports.signIn = async (req, res) => {
