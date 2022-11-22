@@ -6,13 +6,17 @@ const routes = require("./routes/index.route");
 // const Product = require("./database/models/products.js");
 // const Order = require("./database/models/orders.js");
 const express = require('express');
+const dotenv = require("dotenv");
 
 const app = express();
-const PORT = 8080;
+dotenv.config();
 
-app.use("/", routes);
+const PORT = process.env.PORT;
+
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
+
+app.use("/", routes);
 
 const main = async() => {
     const connect = await mongo.connectToDb();

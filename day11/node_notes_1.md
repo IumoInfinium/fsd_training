@@ -2,10 +2,8 @@
 
 ---
 
-
 Node is single threaded.
 Node Engine (V8 )is made with the support of C++ to interact with the system kernel to work with system resources.
-
 
 > **Event** ? What is a event ? **Event** is just a task to be performed. 
 
@@ -15,7 +13,7 @@ __Blocking events__ - Time or process used by third-party functions
 Eg. - Promises, Aync & Await
 
 __Unblocking events__- Events which take immediate action.
-Eg. - ```Console.log("Hii");```
+Eg. - `Console.log("Hii");`
 
 That means, the events are inputted inside a queue for work and then performed when needed.
 That is why it is able to work even if it is single threaded.
@@ -84,7 +82,9 @@ Secondary to it, create a directory system
 Similarly in database directory, create a connection file ` connection.js`, connecting mongodb database.
 such as 
 
-```
+<h5 a><strong><code>connection.js</code></strong></h5>
+
+```javascript
 const mongoose  = require("mongoose");
 
 exports.connectToDb = async () =>{
@@ -138,20 +138,20 @@ Clearly, I can see a `User.js` file in models, that is my
 
 - Import Express in js file.
 
-    ```(js)
+    ```js
     const express = require("express");
     ```
 
 - Make an object with `express` function.
 
-    ```(js)
+    ```js
     const app = express();
     ```
 
 - Create routes wherever you need
 
     Here, we made a base route with a get request at `/` and responded it with _hello world_
-    ```(js)
+    ```js
     app.get('/', (req, res) => {
         res.send('hello world');
     })
@@ -159,7 +159,7 @@ Clearly, I can see a `User.js` file in models, that is my
 
 - But, it won't show anywhere, so I am gonna make a local server that listens and responds to the request I make. I do this by
 
-    ```(js)
+    ```js
     const PORT = 8080;
     app.listen(PORT,()=>{
         // Anything you want the server to do 
@@ -179,7 +179,9 @@ Now, for I will be adding a package `nodemon` to my custom scripts for reloading
 
 Find `package.json` and for the key `scripts`, add a new key-value pair in form of below.
 
-```
+<h5 a><strong><code>package.json</code></strong></h5>
+
+```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start" : "nodemon ./index.js localhost 8080"
@@ -196,6 +198,9 @@ I created, a __database__ directory structure containing __models__ directory as
 
 For inside the models, I create some *js* files, can be `users.js`, `products.js`, these are just structure of our collection/ table in database.
 Let's say, I want a table named __users__, i create `users.js`. And it is just like this.
+
+
+<h5 a><strong><code>users.js</code></strong></h5>
 
 ```javascript
 mongoose = require('mongoose');
@@ -252,6 +257,23 @@ module.exports = userModel;
 
 Similary, create Schema's for products and  orders, and all other different schema's, i need.
 
+
+In case, if I want some custom or nested typed Schema. I am assuming that there are imports and exports like the last code.
+```javascript
+const addressSchema = new Schema({
+    street : String,
+    city: String,
+    pincode : Number
+});
+
+const test = new Schema({
+    name : {type: String, required:true},
+    mobile_number : {type: Number},
+    dob : {type: Date},
+    address : addressSchema
+});
+```
+
 ---
 
 ```
@@ -277,7 +299,7 @@ So, I create two new folders `routes` and `controllers` in my project directory.
 
 Firstly for routes, in routes folder, I create, my base URL route file `index.route.js` with 
 
-> index.route.js
+<h5 a><strong><code>index.route.js</code></strong></h5>
 
 ```javascript
 const express = require('express');
@@ -299,10 +321,9 @@ Also, I added a `/user` route to  router object and linked it with a another fil
 
 The `users.route.js` will look alike to `index.route.js` like this...
 
-> users.route.js
+<h5 a><strong><code>users.route.js</code></strong></h5>
 
 ```javascript
-
 const express = require('express');
 const router = express.Router();
 
@@ -332,7 +353,7 @@ This creates, 2 new endpoints for `/user` route, namely `/user/` and `/user/set`
 
 But, I don't have, `user.controller.js`, from where am I gonna import it! So I need this file in `controllers` folder, with following content.
 
-> users.controllers.js
+<h5 a><strong><code>users.controllers.js</code></strong></h5>
 
 ```javascript
 exports.getUserDetails = async (req,res) => {
@@ -360,7 +381,7 @@ See, the URL open right now is `localhost:8080/`, but what if i change it to `lo
 What it shows right now is static !! And what's the fun in it?
 So, let's change `users.controllers.js`, to access the collection(table) and get a list of all the users.
 
-#### users.controllers.js
+<h5 a><strong><code>users.controllers.js</code></strong></h5>
 
 ```javascript
 const userModel = require("../database/models/users");
@@ -378,7 +399,53 @@ exports.getUserDetails = async (req,res) => {
     }
 }
 ```
+
 This will give an array of all the users, when `localhost:8080/users/` is hit.
 Similarly, I can create different routings with endpoints with different funcitonalities(controllers) for them. 
 
 > **Note** : I am assuming that the terminal commans `npm start`, still works as expected, and runs continuously.
+
+
+---
+ 
+### Using POST request
+
+For creating a new object for collection, I receive data from the request's body.
+
+Firstly, I need to add a endpoint to handle `POST` request in `users.route.js`.
+
+<h5 a><strong><code>users.route.js</code></strong></h5>
+
+```javascript
+router.post("/",userController.setUserDetails);
+```
+
+<h5 a><strong><code>users.controller.js</code></strong></h5>
+
+```javascript
+exports.setUserDetails = async (req,res) => {
+    try{
+        const userData = {email, password , first_name, last_name, mobile_number, gender} = req.body;
+        const newUserObj = new userModel(userData);
+        newUserObj.save();
+        res.send({
+            statusCode:200,
+            message:"update",
+            error: false,
+            data:userData
+        });
+
+    }
+    catch(err){
+        console.log(err.message);
+        res.send({
+            statusCode:500,
+            message:err.message,
+            error: true,
+            data:err
+        });
+    }
+}
+```
+
+All of this creates, a basic API based node application, but stil I got more to do, so for more go to [Node.js Part 2](./node_notes_2.md)

@@ -42,7 +42,7 @@ const product = new Schema({
         type:Number,
         min:1
     },
-    collection: [{ img: String, desc: String }],
+    // collection: [{ img: String, desc: String }],
     created_at:{
         type:Date,
         default:Date.now
