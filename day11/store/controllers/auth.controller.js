@@ -2,6 +2,19 @@ const userModel = require("../database/models/users");
 const crypto = require("node:crypto");
 const jwt = require("jsonwebtoken");
 const cookieParser  = require("cookie-parser");
+const e = require("express");
+
+const passwordHasher= function(password){
+    const salt = process.env.SALT;
+    const saltedPassword = password + salt;
+
+    // use sha1 algorithm for hashing
+    const hash =  crypto.createHash("sha1");
+    hash.update(saltedPassword);
+
+    // returns hashed password in hex form
+    return hashedPassword =  hash.digest("hex");
+}
 
 exports.signUp = async (req,res) => {
     try{
@@ -19,52 +32,45 @@ exports.signUp = async (req,res) => {
                 data : userExists
             })
         }
+        else{
+            const hashedPassword = passwordHasher(userData.password);
 
-        // random string for making password more complex
-        const salt = process.env.SALT;
-        const saltedPassword = userData.password + salt;
+            const newUser = new userModel({
+                email : userData.email,
+                password: hashedPassword,
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+                mobile_number: userData.mobile_number,
+                gender : userData.gender
+            })
 
-        // use sha1 algorithm for hashing
-        const hash =  crypto.createHash("sha1");
-        hash.update(saltedPassword);
+            await newUser.save((err) => {
+                if(err) console.log(err.message);
+            })
+            const token = jwt.sign(
+                {userId: newUser._id},
+                process.env.SECRET_TOKEN,
+                {expiresIn: "2h",}
+                );
+            
+            res.cookie('access_token',token);
 
-        // returns hashed password in hex form
-        const hashedPassword =  hash.digest("hex");
-
-        const newUser = new userModel({
-            email : userData.email,
-            password: hashedPassword,
-            first_name: userData.first_name,
-            last_name: userData.last_name,
-            mobile_number: userData.mobile_number,
-            gender : userData.gender
-        })
-
-        await newUser.save((err) => {
-            if(err) console.log(err.message);
-        })
-        const token = jwt.sign(
-            {userId: newUser._id},
-            process.env.SECRET_TOKEN,
-            {expiresIn: "2h",}
-            );
-        
-        res.json({
-            statusCode: 200,
-            message: "User created successfully",
-            error: false,
-            data: newUser,
-            token: token,
-        });
+            res.send({
+                statusCode: 200,
+                message: "User created successfully",
+                error: false,
+                data: newUser,
+                token: token,
+            });
+        }
     }
     catch (err) {
-        // res.send({
-        //     statusCode: 500,
-        //     message: err.message,
-        //     error: true,
-        //     data: null,
-        // });
-        // res.send("asd");
+        res.send({
+            statusCode: 500,
+            message: err.message,
+            error: true,
+            data: null,
+        });
     }
 }
 
@@ -72,8 +78,10 @@ exports.signIn = async (req, res) => {
     try{
         const userData = {email, password} = req.body;
 
+        const hashedPassword = passwordHasher(userData.password)
+        
         const userExists = userModel.findOne({
-            email : userData.email
+            email : userData.email,
         });
         console.log(userExists);
 
@@ -85,32 +93,31 @@ exports.signIn = async (req, res) => {
                 data : "User doesn't exists."
             })
         }
-        const salt = process.env.SALT;
-        const saltedPassword = userData.password + salt;
+        else{
+            const token = jwt.sign({id: userExists._id},process.env.SECRET_TOKEN,{"expiresIn":'1h'});
 
-        // use sha1 algorithm for hashing
-        const hash =  crypto.createHash("sha1");
-        hash.update(saltedPassword);
-
-        // returns hashed password in hex form
-        const hashedPassword =  hash.digest("hex");
-        if(hashedPassword  !== userExists.password){
+            res.cookie("access_token",token);
             res.send({
                 statusCode : 200,
-                message : "Incorrect Password while login !!",
+                message : "Logged In",
                 error : true,
-                data : "Wrong Password! Please try again !!"
+                data : null 
             })
         }
-
+    }
+    catch(err){
         res.send({
-            statusCode : 200,
-            message : "Logged In",
+            statusCode : 500,
+            message : "Error while logging in !",
             error : true,
             data : userExists 
         })
     }
-    catch(err){
-        
-    }
+};
+
+exports.logout = async (req, res) =>{
+    res.clearCookie("access_token").status(200).json({
+        message : "Logged out succcesfully !"
+    });
+    // res.redirect('/');
 };
