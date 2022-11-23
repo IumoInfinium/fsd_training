@@ -42,42 +42,53 @@ const userModel = require("../database/models/users");
 const crypto = require("node:crypto");
 
 exports.signUp = async (req,res) => {
-    const userData = {email, password, first_name, last_name, mobile_number, gender} = req.body;
+    try{
+        const userData = {email, password, first_name, last_name, mobile_number, gender} = req.body;
     
-    const userExists = userModel.findOne({
-        email : userData.email
-    })
-    if(userExists){
-        res.send({
-            statusCode : 200,
-            message : "User already exists! Please login !!",
-            error : false,
-            data : userExists 
+        const userExists = await userModel.findOne({
+            email : userData.email
+        })
+        console.log(userExists);
+        if(userExists){
+            return res.send({
+                statusCode : 200,
+                message : "User already exists! Please login !!",
+                error : false,
+                data : null
+            })
+        }
+
+        // random string for making password more complex
+        const salt = process.env.SALT;
+        const saltedPassword = userData.password + salt;
+
+        // use sha1 algorithm for hashing
+        const hash =  crypto.createHash("sha1");
+        hash.update(saltedPassword);
+
+        // returns hashed password in hex form
+        const hashedPassword =  hash.digest("hex");
+
+        const newUser = new userModel({
+            email : userData.email,
+            password: hashedPassword,
+            first_name: userData.first_name,
+            last_name: userData.last_name,
+            mobile_number: userData.mobile_number,
+            gender : userData.gender
+        })
+        await newUser.save((err) => {
+            if(err) console.log(err.message);
         })
     }
-
-    // random string for making password more complex
-    const salt = "askjkjakncln42of13";
-    const saltedPassword = userData.password + salt;
-
-    // use sha1 algorithm for hashing
-    const hash =  crypto.createHash("sha1");
-    hash.update(saltedPassword);
-
-    // returns hashed password in hex form
-    const hashedPassword =  hash.digest("hex");
-
-    const newUser = new userModel({
-        email : userData.email,
-        password: hashedPassword,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        mobile_number: userData.mobile_number,
-        gender : userData.gender
-    })
-    await newUser.save((err) => {
-        if(err) console.log(err.message);
-    })
+    catch (error) {
+        res.send({
+        statusCode: 400,
+        message: error.message,
+        error: true,
+        data: null,
+        });
+    }
 }
 ```
 
@@ -152,3 +163,43 @@ So let me try doing it...
     ```
 
     Add the random generated string or our token to `.env` file to gatekeep it.
+
+
+- Now, I need to again to the `signUp` controller, add a new code block after saving the user..
+
+    <h5 a><strong><code>auth.controller.js</code></strong> Update</h5>
+
+    ```javascript
+    const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_TOKEN, {"expiresIn" : "2h"});
+
+    res.send({
+        statusCode: 200,
+        message: "User created successfully",
+        error: false,
+        data: newUser,
+        token: token,
+    });
+    ```
+
+    But, I need the browser to remember my token for the user,
+    I can do it in various ways
+    - Adding token in cookies.
+    - Adding it to header of a request
+    - etc...
+
+    For now, I will add the token to my site's cookies and let the browser remember it and when I need it, I will take it from cookies.
+
+    To do so, I need a package `cookie-parser` to help me parse the cookies, ofcourse to take the token from there.
+    To do, this install it with
+
+    ```
+    npm i -g cookie-parser
+    ```
+
+    And now, in 
+
+    <h5 a><strong><code>auth.controller.js</code></strong> Update</h5>
+
+    ```javascript
+    ```
+    So, now, my Token setup is ready when a user registers, Yayyy!!

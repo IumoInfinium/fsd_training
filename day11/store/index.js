@@ -2,11 +2,10 @@
 
 const mongo = require("./database/connection");
 const routes = require("./routes/index.route");
-// const User = require("./database/models/users.js");
-// const Product = require("./database/models/products.js");
-// const Order = require("./database/models/orders.js");
 const express = require('express');
 const dotenv = require("dotenv");
+const cookieParser  = require("cookie-parser");
+
 
 const app = express();
 dotenv.config();
@@ -15,6 +14,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
+app.use(cookieParser());
 
 app.use("/", routes);
 
