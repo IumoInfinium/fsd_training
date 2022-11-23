@@ -78,39 +78,49 @@ exports.signIn = async (req, res) => {
     try{
         const userData = {email, password} = req.body;
 
+        if(!userData.email  || !userData.password){
+            throw "Need an email and password to login!";
+        }
         const hashedPassword = passwordHasher(userData.password)
-        
-        const userExists = userModel.findOne({
-            email : userData.email,
-        });
-        console.log(userExists);
+        console.log(hashedPassword);
+        const userExists = userModel.findOne({email:userData.email})
+            .then((user)=>{
+                if(!user){
+                    res.send({
+                        statusCode : 200,
+                        message : "No user exists !!",
+                        error : false,
+                        data : userData
+                    })
+                }else{
+                    if(!hashedPassword && hashedPassword !== userExists.password){
+                        res.send({
+                            statusCode : 200,
+                            message : "Wrong password !!",
+                            error : false,
+                            data : userData
+                        })
+                    }
+                    else{
+                        const token = jwt.sign({id: userExists._id},process.env.SECRET_TOKEN,{"expiresIn":'1h'});
 
-        if(!userExists){
-            return res.send({
-                statusCode : 200,
-                message : "User doesn't exists! Please signup first !!",
-                error : false,
-                data : "User doesn't exists."
+                        res.cookie("access_token",token);
+                        res.send({
+                            statusCode : 200,
+                            message : "Logged In",
+                            error : true,
+                            data : null 
+                        })
+                    }
+                }
             })
-        }
-        else{
-            const token = jwt.sign({id: userExists._id},process.env.SECRET_TOKEN,{"expiresIn":'1h'});
-
-            res.cookie("access_token",token);
-            res.send({
-                statusCode : 200,
-                message : "Logged In",
-                error : true,
-                data : null 
-            })
-        }
     }
     catch(err){
         res.send({
             statusCode : 500,
             message : "Error while logging in !",
             error : true,
-            data : userExists 
+            data : err
         })
     }
 };

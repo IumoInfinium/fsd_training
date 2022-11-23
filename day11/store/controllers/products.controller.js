@@ -3,56 +3,64 @@ const productModel = require("../database/models/products");
 exports.getProductDetails = async (req,res) => {
     // res.send("get.user.route!!");
     try{
-        const users = await productModel.find({});
-        console.log(users);
+        const products = await productModel.find({});
+        console.log(products);
         res.send({
-            "statusCode":200,
-            "message":"Users data",
-            "error" : false,
-            "data":users
+            statusCode:200,
+            message :"Products data retrieved successfully !",
+            error : false,
+            data:products
         });
     }
-    catch(error){
-        console.log(error.message);
+    catch(err){
+        console.log(err.message);
         res.send({
-            "statusCode":500,
-            "message":"Error",
-            "error": true,
-            "data":null
+            statusCode:500,
+            message:"Error",
+            error: true,
+            data:null
         });
     }
 }
 exports.setProductDetails = async (req,res) => {
     try{
-        const userData = req.body;
-        console.log(req);
+        const productData = req.body;
+        
+        const newProductObj = new productModel(productData);
+        await newProductObj.save();
         res.send({
-            "statusCode":200,
-            "message":"update",
-            "error": false,
-            "data":userData
+            statusCode:200,
+            message:"update",
+            error: false,
+            data:newProductObj
         });
     }
-    catch(error){
-        console.log(error.message);
+    catch(err){
+        console.log(err.message);
         res.send({
-            "statusCode":500,
-            "message":error.message,
-            "error": true,
-            "data":null
+            statusCode:500,
+            message:err.message,
+            error: true,
+            data:null
         });
     }
 }
 
-exports.findUserDetails = async (req,res) => {
+exports.findProductDetails = async (req,res) => {
     try{
-        const user = await productModel.find({
-            name: "Introduction to Algorithms"
+        const productData = req.body;
+        const products = await productModel.find({
+            name: productData.name
         })
-        res.send(user);
+        res.send(products);
     }
-    catch(error){
-        console.log("Error :" + error.message);
-        res.send(error.message);
+    catch(err){
+        console.log("Error :" + err.message);
+        res.send({
+            statusCode:500,
+            message:err.message,
+            error: true,
+            data:null
+        });
     }
 }

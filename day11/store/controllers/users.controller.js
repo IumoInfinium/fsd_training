@@ -26,7 +26,7 @@ exports.setUserDetails = async (req,res) => {
     try{
         const userData = {email, password , first_name, last_name, mobile_number, gender} = req.body;
         const newUserObj = new userModel(userData);
-        newUserObj.save();
+        await newUserObj.save();
         res.send({
             statusCode:200,
             message:"update",
@@ -55,6 +55,11 @@ exports.findUserDetails = async (req,res) => {
     }
     catch(error){
         console.log("Error :" + error.message);
-        res.send(error.message);
+        res.send({
+            statusCode : 500,
+            message : "Error occured while retriving data !",
+            error : true,
+            data  : err.message
+        })
     }
 }

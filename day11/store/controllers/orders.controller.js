@@ -1,10 +1,9 @@
 const ordersModel = require("../database/models/orders") 
 
-exports.orderGetDetails = async (req,res) => {
+exports.getOrderDetails = async (req,res) => {
     try{
-        const orders = ordersModel.find({});
+        const orders = await ordersModel.find({});
         console.log(orders);
-        if(!orders) throw "No data found !";
         res.send({
             statusCode : 200,
             message : "Orders retrieved successfully !",
@@ -23,30 +22,46 @@ exports.orderGetDetails = async (req,res) => {
 }
 
 
-exports.orderSetDetails = async (req, res) => {
+exports.setOrderDetails = async (req, res) => {
     try{
-        const newOrderInfo = req.body;
-        console.log(newOrderInfo);
-        if(newOrderInfo){
-            const orderObj = new ordersModel({
-                user_id : newOrderInfo[user_id].trim(),
-                amount : newOrderInfo[amount].amount,
-                payment_id : newOrderInfo[payment_id],
-            })
-        } 
+        const orderData = {user_id, amount, payment_id}= req.body;
+        const newOrderObj = new ordersModel(orderData);
+        await newOrderObj.save();
         res.send({
             statusCode : 200,
             message : "Orders updated successfully !",
             error : false,
-            data :" GOOD !"
+            data :orderData
         })
     }
     catch(err){
         res.send({
             statusCode : 500,
-            message : "Error occured while retriving data !",
+            message : "Error occured while creating  order !",
             error : true,
-            data  : err
+            data  : err.message
         })
     }
 };
+
+exports.findOrderDetails = async (req,res) => {
+    try{
+        const orderData = req.body;
+        const orders = await ordersModel.find(orderData)
+        res.send({
+            statusCode : 200,
+            message : "Matching orders...",
+            error : false,
+            data :orders
+        });
+    }
+    catch(err){
+        console.log("Error :" + err.message);
+        res.send({
+            statusCode : 500,
+            message : "Error occured while retriving data !",
+            error : true,
+            data  : err.message
+        })
+    }
+}
