@@ -13,7 +13,8 @@ const passwordHasher= function(password){
     hash.update(saltedPassword);
 
     // returns hashed password in hex form
-    return hashedPassword =  hash.digest("hex");
+    const hashedPassword =  hash.digest("hex");
+    return hashedPassword; 
 }
 
 exports.signUp = async (req,res) => {
@@ -81,44 +82,78 @@ exports.signIn = async (req, res) => {
         if(!userData.email  || !userData.password){
             throw "Need an email and password to login!";
         }
+
         const hashedPassword = passwordHasher(userData.password)
         console.log(hashedPassword);
-        const userExists = userModel.findOne({email:userData.email})
-            .then((user)=>{
-                if(!user){
-                    res.send({
-                        statusCode : 200,
-                        message : "No user exists !!",
-                        error : false,
-                        data : userData
-                    })
-                }else{
-                    if(!hashedPassword && hashedPassword !== userExists.password){
-                        res.send({
-                            statusCode : 200,
+        
+        // const userExists = await userModel.findOne({email:userData.email})
+        //     .then((user)=>{
+        //         if(!user){
+        //             res.send({
+        //                 statusCode : 200,
+        //                 message : "No user exists !!",
+        //                 error : false,
+        //                 data : userData
+        //             })
+        //         }else{
+        //             if((!hashedPassword) && (hashedPassword !== userExists.password)){
+        //                 res.send({
+        //                     statusCode : 200,
+        //                     message : "Wrong password !!",
+        //                     error : false,
+        //                     data : userData
+        //                 })
+        //             }
+        //             else{
+        //                 const token = jwt.sign({id: userExists._id},process.env.SECRET_TOKEN,{"expiresIn":'1h'});
+
+        //                 res.cookie("access_token",token);
+        //                 res.send({
+        //                     statusCode : 200,
+        //                     message : "Logged In",
+        //                     error : true,
+        //                     data : null 
+        //                 })
+        //             }
+        //         }
+        //     })
+        const userExists = await userModel.findOne({email:userData.email});
+
+        if(!userExists){
+            res.send({
+                statusCode : 200,
+                message : "No user exists !!",
+                error : false,
+                data : userData
+            })
+        }
+        else{
+            if((!hashedPassword) && (hashedPassword !== userExists.password)){
+                res.send({
+                    statusCode : 200,
                             message : "Wrong password !!",
                             error : false,
                             data : userData
                         })
-                    }
-                    else{
-                        const token = jwt.sign({id: userExists._id},process.env.SECRET_TOKEN,{"expiresIn":'1h'});
+            }
+            else{
+                const token = jwt.sign({id: userExists._id},process.env.SECRET_TOKEN,{"expiresIn":'1h'});
 
-                        res.cookie("access_token",token);
-                        res.send({
-                            statusCode : 200,
-                            message : "Logged In",
-                            error : true,
-                            data : null 
-                        })
-                    }
-                }
-            })
+                res.cookie("access_token",token);
+                res.send({
+                    statusCode : 200,
+                    message : "Logged In",
+                    error : true,
+                    data : null 
+                })
+            }
+        }
     }
     catch(err){
         res.send({
             statusCode : 500,
-            message : "Error while logging in !",
+            // message : "Error while logging in !",
+            message : err.message,
             error : true,
             data : err
         })
