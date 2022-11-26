@@ -144,7 +144,8 @@ exports.signIn = async (req, res) => {
                     statusCode : 200,
                     message : "Logged In",
                     error : true,
-                    data : null 
+                    data : null,
+                    token :token
                 })
             }
         }

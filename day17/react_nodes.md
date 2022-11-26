@@ -13,6 +13,10 @@ States and Props
 
 Create a directory, where you want your react application to be.. let's say it  REACT_PROJECT
 
+Inside that directory,create react application with executing this command 
+`npm init`.
+
+
 
 ### Hooks
 
@@ -26,7 +30,7 @@ list context
 
     - Use it like this, inside a function
         ```jsx
-        const {name,setName} = useState("header");
+        const [name,setName] = useState("header");
         {name}
         ```
         This way,I can use the useState.
