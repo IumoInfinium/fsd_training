@@ -1,21 +1,39 @@
 // import logo from './logo.svg';
 // import img from 'C:/Users/iumoi/Downloads/elon.webp'
 import './App.css';
-import {Header,Example} from './components/header'
-import Footer from './components/footer'
-import SignUp from './components/signUp'
-import SignIn from './components/signIn'
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {Header,Example} from './components/Header'
+
+import Users from "./components/Users";
+import Products from "./components/Products";
+import Orders from "./components/Orders";
+import Home from "./components/Home";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 
 function App(){
+  // const add = ()=>{
+  //   console.log("add function !");
+  // }
 
-  const add = ()=>{
-    console.log("add function !");
-  }
   return (
     <div className='App'>
       {/* <Header title="TITLE" name={add}></Header> */}
+    
+      <Router>
       <Header title="TITLE"></Header>
-      <SignUp></SignUp>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          {/* <Route path="/about" element={<About />}/> */}
+          <Route path="/users" element={<Users />}> </Route>
+          <Route path="/products" element={<Products />}> </Route>
+          <Route path="/orders" element={<Orders />}> </Route>
+          <Route path="/signin" element={<SignIn />}> </Route>
+          <Route path="/signup" element={<SignUp />}> </Route>
+        </Routes>
+      </Router>
+
+      {/* <SignUp></SignUp> */}
       <Example></Example>
     </div>
   )

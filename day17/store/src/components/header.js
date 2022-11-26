@@ -1,28 +1,35 @@
 import React,{useEffect, useState} from "react";
+import {Link } from "react-router-dom";
+
 
 export const Header = (props) => {
 
-    const {name, setName} = useState("");
+    const [name, setName] = useState("");
 
-    // useEffect(()=>{
-    //     setName("new header");
-    // },{});
+    useEffect(()=>{
+        setName(()=>"new header");
+    },[name]);
     return (
-        <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                {props.title}
-                {name}
+        <nav className="navbar navbar-expand-lg bg-light">
+        <div className="container-fluid">
+            <a className="navbar-brand" href="/">
+                {props.title + name}
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            
+            <Link className="navbar-brand" to="/"></Link>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-                <a class="nav-link" href="/">Features</a>
-                <a class="nav-link" href="/">Pricing</a>
-                <a class="nav-link disabled" href="/">Disabled</a>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
+                {/* <a class="nav-link active" aria-current="page" href="/">Home</a> */}
+                <Link className="nav-link active" to="/">Home</Link>
+                <Link className="nav-link active" to="/users">Users</Link>
+                <Link className="nav-link active" to="/products">Products</Link>
+                <Link className="nav-link active" to="/orders">Orders</Link>
+                <Link className="nav-link active" to="/signin">Sign In</Link>
+                <Link className="nav-link active" to="/signup">Sign Up</Link>
+            
             </div>
             </div>
         </div>
