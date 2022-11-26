@@ -8,9 +8,9 @@ function BasicExample() {
     const [mobileNumber, setMobileNumber] = useState("");
     const [gender, setGender] = useState("");
 
+
+    
     const registerUser = async ()=>{
-        if(!email || !password || !firstName || !lastName ||  Number(mobileNumber) || !gender) console.log("Fill up the entries!!");
-        else{
             const userData = {
                 email : email,
                 password : password,
@@ -30,14 +30,15 @@ function BasicExample() {
             })
             return result.json();
         }
-    }
     const handleSubmit = async( e) =>{
         e.preventDefault();
-        
-        const response = registerUser();
-        if(response=== undefined) console.log("Got no response from server !");
-        if(response.statusCode === 200){
-            document.cookie= `access_token=${response.token}`;
+        if(!email || !password || !firstName || !lastName ||  Number(mobileNumber) || !gender) console.log("Fill up the entries!!");
+        else{
+            const response = registerUser();
+            if(response=== undefined) console.log("Got no response from server !");
+            if(response.statusCode === 200){
+                document.cookie= `access_token=${response.token}`;
+            }
         }
     }
     return (
