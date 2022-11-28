@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 
+import {useEffect} from "react";
 function App(){
   // const add = ()=>{
   //   console.log("add function !");
@@ -28,6 +29,7 @@ function App(){
           <Route path="/users" element={<Users />}> </Route>
           <Route path="/products" element={<Products />}> </Route>
           <Route path="/orders" element={<Orders />}> </Route>
+
           <Route path="/signin" element={<SignIn />}> </Route>
           <Route path="/signup" element={<SignUp />}> </Route>
         </Routes>

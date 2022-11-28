@@ -5,8 +5,8 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [emailError,setEmailError] = useState(false);
-  const [passwordError,setPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,30 +32,28 @@ function SignIn() {
     e.preventDefault();
     setEmailError(false);
     setPasswordError(false);
-    if(!email || email === ""){ setEmailError(true);}
-    if(!password ||password === ""){ setPasswordError(true);}
-    if(emailError || passwordError) return false;
-    
-    if(emailError || passwordError){
+    if (!email || email === "") { setEmailError(true); }
+    if (!password || password === "") { setPasswordError(true); }
+    if (emailError || passwordError) return false;
+
     const response = await authUser();
-      console.log(response);
-      if (response === undefined) console.log("Got no response from server !");
-      if (response.statusCode === 200) {
-        document.cookie = `access_token=${response.token}`;
-        localStorage.setItem("userData", JSON.stringify({
-          id: response.data._id,
-          token: response.token
-        }));
+    console.log(response);
+    if (response === undefined) console.log("Got no response from server !");
+    if (response.statusCode === 200) {
+      document.cookie = `access_token=${response.token}`;
+      localStorage.setItem("userData", JSON.stringify({
+        id: response.data._id,
+        token: response.token
+      }));
 
-        setEmail("");
-        setPassword("");
+      setEmail("");
+      setPassword("");
 
-        
-        navigate("/");
-      }
+
+      navigate("/");
     }
   }
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
@@ -64,8 +62,8 @@ function SignIn() {
         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={
           e => setEmail(e.target.value)
         } />
-        {emailError && 
-          <label className="form-label" htmlFor="exampleInputEmail" style={{color :"red"}}>
+        {emailError &&
+          <label className="form-label" htmlFor="exampleInputEmail" style={{ color: "red" }}>
             Please enter your email
           </label>
         }
@@ -76,8 +74,8 @@ function SignIn() {
         <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={
           e => setPassword(e.target.value)
         } />
-        {passwordError && 
-          <label className="form-label" htmlFor="exampleInputPassword" style={{color :"red"}}>
+        {passwordError &&
+          <label className="form-label" htmlFor="exampleInputPassword" style={{ color: "red" }}>
             Please enter your password
           </label>
         }
