@@ -22,7 +22,7 @@ router.use("/auth",orderRoutes)
 
 Since, I imported a `auth.route.js` file, I need to create it as well. so here it is.
 
-<h5 a><strong><code>auth.controller.js</code></strong></h5>
+<h5 a><strong><code>auth.route.js</code></strong></h5>
 
 ```javascript
 const express = require("express");

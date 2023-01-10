@@ -143,7 +143,7 @@ exports.signIn = async (req, res) => {
                 res.send({
                     statusCode : 200,
                     message : "Logged In",
-                    error : true,
+                    error : false,
                     data : userExists,
                     token :token
                 })
